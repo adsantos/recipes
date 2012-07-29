@@ -21,6 +21,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'pry-rails', '~> 0.1.6'
+end
+
 group :test do
   gem "factory_girl_rails", "~> 3.5.0"
 end
