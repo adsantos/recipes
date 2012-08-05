@@ -1,0 +1,18 @@
+<h1>Showing  <b><%= @recipe.name %></b></h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% @recipe.ingredients.each do |ingredient| %>
+  <tr>
+    <td><%= ingredient.name %></td>
+    <td><%= ingredient_description_text(ingredient) %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+
