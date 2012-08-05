@@ -8,6 +8,13 @@ class RecipesController < ApplicationController
   end
 
   def create
+    @recipe = Recipe.new(params[:recipe])
+    if @recipe.save
+      flash[:message] = "Recipe saved successfully"
+      respond_with @recipe
+    else
+      respond_with @recipe
+    end
   end
 
   def update
@@ -26,5 +33,6 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @recipe = Recipe.new
   end
 end
