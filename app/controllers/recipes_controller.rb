@@ -17,14 +17,22 @@ class RecipesController < ApplicationController
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+    respond_with @recipe
+  end
+
   def update
     recipe = Recipe.find(params[:id])
     if recipe.update_attributes(params[:recipe])
-
+      flash[:message] = "Recipe updated successfully"
     end
+    respond_with @recipe
   end
 
   def destroy
+    Recipe.find(params[:id]).delete
+    redirect_to :action => 'index'
   end
 
   def show
