@@ -1,0 +1,14 @@
+<h1>Recipes update</h1>
+
+<%= form_for @recipe, :url => recipe_path, :method => :put do |f| %>
+
+  <div>
+    <% @recipe.errors.each do |field, message| %>
+      <p><%= "#{field} - #{message}" %></p>
+    <% end %>
+  </div>
+
+  <p>Name:</p><%= f.text_field :name %>
+  <%= f.submit "Update" %>
+<% end %>
+
