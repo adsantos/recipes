@@ -1,0 +1,15 @@
+<h1>Showing  <b><%= @ingredient.name %></b></h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+  <tr>
+    <td><%= @ingredient.name %></td>
+    <td><%= ingredient_description_text(@ingredient) %>
+  </tr>
+</table>
+
+

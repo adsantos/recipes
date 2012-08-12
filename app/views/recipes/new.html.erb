@@ -9,6 +9,10 @@
   </div>
 
   <p>Name:</p><%= f.text_field :name %>
+
+  <label>Choose Ingredients:</label>
+  <%= f.select :ingredients, Ingredient.all.collect{|ing| [ing.name, ing.id]}, {}, multiple: true %>
+
   <%= f.submit "Create" %>
 <% end %>
 

@@ -1,0 +1,15 @@
+<h1>Ingredient new</h1>
+
+<%= form_for @ingredient, :url => ingredients_path do |f| %>
+
+  <div>
+    <% @ingredient.errors.each do |field, message| %>
+      <p><%= "#{field} - #{message}" %></p>
+    <% end %>
+  </div>
+
+  <p>Name:</p><%= f.text_field :name %>
+  <p>Description:</p><%= f.text_field :description %>
+  <%= f.submit "Create" %>
+<% end %>
+
