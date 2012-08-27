@@ -1,0 +1,14 @@
+<h1>Step new</h1>
+
+<%= form_for @step, :url => steps_path do |f| %>
+
+  <div>
+    <% @step.errors.each do |field, message| %>
+      <p><%= "#{field} - #{message}" %></p>
+    <% end %>
+  </div>
+
+  <p>Description:</p><%= f.text_field :description %>
+  <%= f.submit "Create" %>
+<% end %>
+

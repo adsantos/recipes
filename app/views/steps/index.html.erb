@@ -1,0 +1,21 @@
+<h1>Listing Steps</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @steps.each do |step| %>
+  <tr>
+    <td><%= step.description %></td>
+    <td><%= link_to 'Show', step_path(step) %></td>
+    <td><%= link_to 'Edit', edit_step_path(step) %></td>
+    <td><%= link_to 'Remove', step_path(step), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'New step', new_step_path %>
