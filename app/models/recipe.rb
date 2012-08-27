@@ -9,10 +9,13 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_steps
   has_many :steps, through: :recipe_steps
 
-  def self.new_with_ingredients(params)
+  def self.new_with_ingredients_and_steps(params)
     ingredients = Ingredient.from_params(params[:recipe].delete(:ingredients))
+    new_ingredients = Ingredient.new_from_params(params[:recipe].delete(:new_ingredients)) || []
+    steps = Step.from_params(params[:recipe].delete(:steps)) || []
     recipe = Recipe.new(params[:recipe])
-    recipe.ingredients << ingredients
+    recipe.ingredients << ingredients.concat(new_ingredients)
+    recipe.steps << steps
     recipe
   end
 

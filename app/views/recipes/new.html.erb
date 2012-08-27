@@ -12,7 +12,22 @@
 
   <label>Choose Ingredients:</label>
   <%= f.select :ingredients, Ingredient.all.collect{|ing| [ing.name, ing.id]}, {}, multiple: true %>
+  <br>
 
+  <div id='ingredients'>
+    <!-- New text areas for steps will go here-->
+  </div>
+
+  <%= link_to "Add a new ingredient", "#", onclick: "add_ingredient_textbox_to('#ingredients');" %>
+
+  <div id='steps'>
+    <!-- New text areas for steps will go here-->
+  </div>
+
+  <%= link_to "Add a new step", "#", onclick: "add_step_textbox_to('#steps');" %>
+
+  <br>
+  <br>
   <%= f.submit "Create" %>
 <% end %>
 

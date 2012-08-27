@@ -3,4 +3,9 @@ class Step < ActiveRecord::Base
   validates_presence_of :description
 
   belongs_to :recipe
+
+  def self.from_params(desc_list)
+    desc_list.map{|desc| Step.create(description: desc)} if desc_list
+  end
+
 end

@@ -15,4 +15,9 @@ class Ingredient < ActiveRecord::Base
     end
   end
 
+  def self.new_from_params(list)
+    list.map{|ingredient_name| Ingredient.create(name: ingredient_name)} if list
+  end
+
+
 end

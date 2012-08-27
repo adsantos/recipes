@@ -6,13 +6,27 @@
     <th>Ingredient Description</th>
   </tr>
 
-<% @recipe.ingredients.each do |ingredient| %>
-  <tr>
-    <td><%= ingredient.name %></td>
-    <td><%= ingredient_description_text(ingredient) %>
-    </td>
-  </tr>
-<% end %>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <tr>
+      <td><%= ingredient.name %></td>
+      <td><%= ingredient_description_text(ingredient) %>
+      </td>
+    </tr>
+  <% end %>
+
 </table>
 
+<br>
 
+<table>
+  <tr>
+    <th>Steps</th>
+  </tr>
+
+  <% @recipe.steps.each do |step| %>
+    <tr>
+      <td><%= step.description %>
+      </td>
+    </tr>
+  <% end %>
+</table>
