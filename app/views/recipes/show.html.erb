@@ -3,13 +3,11 @@
 <table>
   <tr>
     <th>Ingredient Name</th>
-    <th>Ingredient Description</th>
   </tr>
 
   <% @recipe.ingredients.each do |ingredient| %>
     <tr>
       <td><%= ingredient.name %></td>
-      <td><%= ingredient_description_text(ingredient) %>
       </td>
     </tr>
   <% end %>

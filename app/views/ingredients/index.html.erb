@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +11,6 @@
 <% @ingredients.each do |ingredient| %>
   <tr>
     <td><%= ingredient.name %></td>
-    <td><%= ingredient.description %></td>
     <td><%= link_to 'Show', ingredient_path(ingredient) %></td>
     <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
     <td><%= link_to 'Remove', ingredient_path(ingredient), :confirm => 'Are you sure?', :method => :delete %></td>
