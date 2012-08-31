@@ -7,7 +7,7 @@ gem 'rails', '3.2.7'
 
 gem 'sqlite3'
 gem 'mysql2', '~> 0.3.11'
-
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
