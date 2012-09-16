@@ -7,9 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+
+  <%= render 'layouts/header' %>
+
+  <div class="container">
+
+    <%= render 'layouts/flash', :flash => flash %>
+
+    <%= yield %>
+
+  </div>
+
+  <!-- TODO - Footer-->
 
 </body>
 </html>
