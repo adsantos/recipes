@@ -1,0 +1,8 @@
+<% flash.each do |key, message| %>
+<div class="flash">
+  <div class="alert <%= key %>">
+    <a class="close" data-dismiss="alert">×</a>
+    <%= message %>
+  </div>
+</div>
+<% end %>
