@@ -14,14 +14,21 @@ module RecipesHelper
     end
   end
 
-  def build_recipe_caption(recipe)
-    content_tag(:div, class: "caption") do
-      concat build_recipe_link(recipe)
-      if current_user
+  def build_recipe_buttons(recipe)
+    if current_user
+      content_tag :p do
         concat link_to 'Show', recipe, class:"btn"
         concat link_to 'Edit', edit_recipe_path(recipe), class:"btn"
         concat link_to 'Remove', recipe, :confirm => 'Are you sure?', :method => :delete, class:"btn"
       end
+    end
+
+  end
+
+  def build_recipe_caption(recipe)
+    content_tag(:div, class: "caption") do
+      concat build_recipe_link(recipe)
+      concat build_recipe_buttons(recipe)
     end
   end
 
