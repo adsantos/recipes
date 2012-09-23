@@ -1,3 +1,11 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.recipe_link {
+  color: #333333;
+  &:hover {
+    text-decoration: none;
+    color: #969696;
+  }
+}
