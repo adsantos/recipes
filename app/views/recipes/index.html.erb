@@ -9,19 +9,7 @@
           <ul class="thumbnails">
         <% end %>
         <div class="span4">
-          <div class="thumbnail">
-            <img alt="" src="http://placehold.it/300x200">
-            <div class="caption">
-              <h3><%= @recipes[recipe_index].name %></h3>
-              <p>
-                <% if current_user %>
-                  <%= link_to 'Show', @recipes[recipe_index], class:"btn" %>
-                  <%= link_to 'Edit', edit_recipe_path(@recipes[recipe_index]), class:"btn"  %>
-                  <%= link_to 'Remove', @recipes[recipe_index], :confirm => 'Are you sure?', :method => :delete, class:"btn"  %>
-                <% end %>
-              </p>
-            </div>
-          </div>
+          <%= build_recipe_markup(@recipes[recipe_index]) %>
         </div>
       <% end %>
     </ul>
