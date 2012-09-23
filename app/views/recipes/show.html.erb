@@ -1,30 +1,29 @@
-<h1>Showing  <b><%= @recipe.name %></b></h1>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <h2><center><%= @recipe.name %></center></h2>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <center><img src="http://placehold.it/300x200"></img></center>
+  </div>
+  <div class="row-fluid">
+    <div class="span3">
+      <legend>Ingredients</legend>
+        <ul class="unstyled">
+          <% @recipe.ingredients.each do |ingredient| %>
+            <li><%= ingredient.name %></li>
+          <% end %>
+        </ul>
 
-<table>
-  <tr>
-    <th>Ingredient Name</th>
-  </tr>
-
-  <% @recipe.ingredients.each do |ingredient| %>
-    <tr>
-      <td><%= ingredient.name %></td>
-      </td>
-    </tr>
-  <% end %>
-
-</table>
-
-<br>
-
-<table>
-  <tr>
-    <th>Steps</th>
-  </tr>
-
-  <% @recipe.steps.each do |step| %>
-    <tr>
-      <td><%= step.description %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+    </div>
+    <div class="span9">
+      <legend>steps</legend>
+        <ol>
+          <% @recipe.steps.each do |step| %>
+            <li><%= step.description %></li>
+          <% end %>
+        </ol>
+    </div>
+  </div>
+</div>
