@@ -9,14 +9,23 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_steps
   has_many :steps, through: :recipe_steps
 
+  # {:recipe => {:name=>"Bolo de bolacha", :ingredients=>["ingredient=chocolate&quantity=1&unit=cups", "ingredient=chocolate&quantity=1&unit=kg"], :steps=>["step 1\r\nstep 1", "step 1\r\nstep 2"]}}
   def self.new_with_ingredients_and_steps(params)
-    ingredients = Ingredient.from_params(params[:recipe].delete(:ingredients))
-    new_ingredients = Ingredient.new_from_params(params[:recipe].delete(:new_ingredients)) || []
-    steps = Step.from_params(params[:recipe].delete(:steps)) || []
+    # Extract and create/get ingredients
+    ingredients = Ingredient.find_or_create_from_params(params[:recipe].delete(:ingredients))
+    # Extract and create steps
+    steps = Step.create_from_params(params[:recipe].delete(:steps)) || []
+    # Create recipe
     recipe = Recipe.new(params[:recipe])
-    recipe.ingredients << ingredients.concat(new_ingredients)
     recipe.steps << steps
+    # Create recipe ingredients
+    RecipeIngredient.create_with_ingredients_and_recipe(ingredients, recipe)
+    # Return the recipe
     recipe
+  end
+
+  def self.units
+    ["gr","kg","cups", "unit(s)"]
   end
 
 end

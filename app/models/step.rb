@@ -4,7 +4,7 @@ class Step < ActiveRecord::Base
 
   belongs_to :recipe
 
-  def self.from_params(desc_list)
+  def self.create_from_params(desc_list)
     desc_list.map{|desc| Step.create(description: desc)} if desc_list
   end
 
