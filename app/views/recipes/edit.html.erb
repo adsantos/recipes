@@ -1,14 +1,65 @@
-<h1>Recipes update</h1>
 
-<%= form_for @recipe, :url => recipe_path, :method => :put do |f| %>
+    <%= simple_form_for @recipe, :url => recipes_path, :html => { :class => "form-horizontal" } do |f| %>
 
-  <div>
-    <% @recipe.errors.each do |field, message| %>
-      <p><%= "#{field} - #{message}" %></p>
-    <% end %>
+<div class="row-fluid">
+  <div class="span12">
+    <legend>Edit recipe</legend>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span8">
+
+
+      <div>
+        <% @recipe.errors.each do |field, message| %>
+          <p><%= "#{field} - #{message}" %></p>
+        <% end %>
+      </div>
+
+      <%= f.input :name, placeholder: "recipe name" %>
+
+      <div class="control-group">
+        <label for="recipe_ingredients" class="string required control-label">Choose Ingredients</label>
+        <div class="controls">
+          <%= select_tag :ingredients, options_for_select(Ingredient.all.collect{|ing| [ing.name, ing.id]}), prompt: "Select ingredient", id: "recipe_ingredients" %>
+          <%= text_field_tag :quantity, nil, placeholder: "quantity", class: "input-small" %>
+          <%= select_tag :unit, options_for_select(Recipe.units.collect{|e| [e, Recipe.units.index(e)] }), prompt: "Select unit", class: "input-medium" %>
+          <%= link_to "Add", "#", onclick: "add_new_ingredient('#ingredients','#recipe_ingredients','#quantity','#unit');", class: "btn" %>
+        </div>
+      </div>
+
+      <div id="hidden_ingredients"></div>
+
+      <div class="control-group">
+        <label for="recipe_steps" class="string required control-label">Add steps</label>
+        <div class="controls">
+          <%= text_area_tag "new-step", nil, class: "steps-text-area" %>
+          <%= link_to "Add", "#", onclick: "add_new_step('#steps','#new-step');", class: "btn" %>
+        </div>
+      </div>
+
+      <div id="hidden_steps"></div>
+
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit "Update", :class => "btn" %>
+        </div>
+      </div>
+
   </div>
 
-  <p>Name:</p><%= f.text_field :name %>
-  <%= f.submit "Update" %>
-<% end %>
+  <div class="span4">
+    <h3 id="new_recipe_name"></h3>
 
+    <legend>Ingredients</legend>
+    <div id='ingredients'>
+      <!-- New text areas for ingredients will go here-->
+    </div>
+    <legend>Steps</legend>
+    <div id='steps'>
+      <!-- New text areas for steps will go here-->
+    </div>
+  </div>
+</div>
+<% end %>
