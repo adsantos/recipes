@@ -4,5 +4,8 @@ Recipes::Application.routes.draw do
   resources :steps
   resources :recipes
   resources :ingredients
+  get "about"    => "home#about", constraints: {format: :html}
+  get "me"    => "home#me", constraints: {format: :html}
+
   root to: "recipes#index"
 end
