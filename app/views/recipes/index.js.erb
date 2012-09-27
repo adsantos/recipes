@@ -1,0 +1,6 @@
+$('.thumbnails').append('<%= j render(@recipes %>)');
+<% if @recipes.next_page %>
+	$('.pagination').replaceWith('<%= j paginate(@recipes) %>');
+<% else %>
+	$('.pagination').remove();
+<% end %>

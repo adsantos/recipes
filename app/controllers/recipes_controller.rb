@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:index, :show]
-  respond_to :html
+  respond_to :html, :js
 
   def index
     @recipes = Recipe.order(:name).page(params[:page])
