@@ -1,18 +1,9 @@
 <h1>Listing Recipes</h1>
 
-<div class="row-fluid">
-  <div class="span12">
-    <ul class="thumbnails">
-      <% @recipes.each_index do |recipe_index| %>
-        <% if recipe_index % 3 == 0 %>
-          </ul>
-          <ul class="thumbnails">
-        <% end %>
-        <div class="span4">
-          <%= build_recipe_markup(@recipes[recipe_index]) %>
-        </div>
-      <% end %>
-    </ul>
-    <%= paginate @recipes %>
-  </div>
+<div id="recipes">
+  <%= render(@recipes) %>
+</div>
+
+<div class="pagination-links">
+  <%= paginate @recipes %>
 </div>

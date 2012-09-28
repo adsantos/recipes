@@ -1,0 +1,17 @@
+<% index = @recipes.index(recipe) %>
+
+<% if index == 0 %>
+  <div class="row-fluid">
+<% end %>
+
+<% if index % 3 == 0 && index != 0 %>
+  </div><div class="row-fluid">
+<% end %>
+
+<div class="span4">
+  <%= build_recipe_markup(recipe) %>
+</div>
+
+<% if index == @recipes.size - 1 %>
+  </div>
+<% end %>
