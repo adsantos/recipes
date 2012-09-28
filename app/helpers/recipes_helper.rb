@@ -19,7 +19,7 @@ module RecipesHelper
       content_tag :p do
         concat link_to 'Show', recipe, class:"btn"
         concat link_to 'Edit', edit_recipe_path(recipe), class:"btn"
-        concat link_to 'Remove', recipe, :confirm => 'Are you sure?', :method => :delete, class:"btn"
+        concat link_to 'Remove', recipe, :data => { :confirm => 'Are you sure?' }, :method => :delete, class:"btn"
       end
     end
 

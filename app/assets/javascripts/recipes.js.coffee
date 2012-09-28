@@ -7,6 +7,15 @@ $ ->
     $('#new_recipe_name').text(@value)
   )
 
+$ ->
+  if $('.pagination').length
+    $(window).scroll ->
+      url = $('.next > a').attr('href')
+      if url && $(window).scrollTop() > $(document).height() - $(window).height() - 1
+        $('.page').text('Fetching more products...')
+        $.getScript(url)
+    $(window).scroll()
+
 window.add_new_ingredient = (target_id, ingredient_id, quantity_id, unit_id) ->
   # Fetch data from fields
   ingredient = $("#{ingredient_id} :selected").text()
