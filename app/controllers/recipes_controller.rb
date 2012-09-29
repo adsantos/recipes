@@ -4,7 +4,9 @@ class RecipesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @recipes = Recipe.order(:name).page(params[:page]).per(9)
+    puts params.inspect
+    @search = Recipe.search(params[:q])
+    @recipes = @search.result.page(params[:page]).per(9)
     respond_with @recipes
   end
 

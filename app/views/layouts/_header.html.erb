@@ -3,9 +3,12 @@
     <div class="container">
       <%= link_to "Recipicious", "/", class: "brand" %>
       <ul class="nav pull-right">
-        <form action="" class="navbar-search pull-left">
-          <input type="text" placeholder="Search" class="search-query span2">
-        </form>
+        <%= search_form_for @search, html: {class: "navbar-search pull-left"} do |f| %>
+          <div class="field">
+            <%= f.text_field :name_cont, { placeholder: "Search by recipe name", class: "search-query span2" } %>
+<!--            <%= f.text_field :ingredients_name_cont, { placeholder: "Search", class: "search-query span2" } %> -->
+          </div>
+        <% end %>
         <% if current_user %>
           <li><%= link_to 'New recipe', new_recipe_path %></li>
         <% end %>
