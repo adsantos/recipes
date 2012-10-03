@@ -1,6 +1,7 @@
 class Recipe < ActiveRecord::Base
-  attr_accessible :name, :ingredients
+  attr_accessible :name, :ingredients, :photo
   validates_presence_of :name
+  has_attached_file :photo, :styles => {:medium => "300x300>", :thumb => "100x100>"}, :storage => :s3, :s3_credentials => S3_CONFIG, :path => "/:style/:id/:filename", :use_ssl => false, :bucket => "recipes-photos", url: ":s3_domain_url"
 
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
