@@ -34,7 +34,11 @@ module RecipesHelper
 
   def build_recipe_markup(recipe)
     content_tag :div, class: "thumbnail" do
-      concat image_tag("http://placehold.it/300x200")
+      if recipe.photo_file_name.nil?
+        concat image_tag("noImage.gif")
+      else
+        concat image_tag(recipe.photo)
+      end
       concat build_recipe_caption(recipe)
     end
   end
