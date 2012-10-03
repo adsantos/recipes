@@ -32,6 +32,13 @@
       <div id="hidden_ingredients"></div>
 
       <div class="control-group">
+        <label for="recipe_photo" class="string required control-label">Change photo</label>
+        <div class="controls">
+        <%= f.file_field :photo, class: "string required" %>
+        </div>
+      </div>
+
+      <div class="control-group">
         <label for="recipe_steps" class="string required control-label">Add steps</label>
         <div class="controls">
           <%= text_area_tag "new-step", nil, class: "steps-text-area" %>
