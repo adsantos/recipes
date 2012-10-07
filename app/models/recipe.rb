@@ -18,15 +18,41 @@ class Recipe < ActiveRecord::Base
     steps = Step.create_from_params(params[:recipe].delete(:steps)) || []
     # Create recipe
     recipe = Recipe.new(params[:recipe])
-    recipe.steps << steps
+    recipe.steps = steps
     # Create recipe ingredients
     RecipeIngredient.create_with_ingredients_and_recipe(ingredients, recipe)
     # Return the recipe
     recipe
   end
 
+  # {"name"=>"Tarte de laranja e limao", "ingredients"=>["ingredient=laranja&quantity=1&unit=kg"]}}
+  def update_with_ingredients_and_steps(params)
+    RecipeIngredient.delete_relationship(self.id)
+    RecipeStep.delete_relationship(self.id)
+
+    ingredients = Ingredient.find_or_create_from_params(params[:recipe].delete(:ingredients))
+    # Extract and create steps
+    steps = Step.create_from_params(params[:recipe].delete(:steps)) || []
+    # Create recipe
+    self.steps = steps
+    # Create recipe ingredients
+    RecipeIngredient.create_with_ingredients_and_recipe(ingredients, self)
+    # Return the recipe
+    update_attributes(params[:recipe])
+  end
+
   def self.units
     ["gr","kg","cups", "unit(s)"]
+  end
+
+  def recipe_ingredients_details
+    self.recipe_ingredients.map do |ri|
+      {
+        name: ri.ingredient.name,
+        quantity: ri.quantity,
+        unit: ri.unit
+      }
+    end
   end
 
 end
