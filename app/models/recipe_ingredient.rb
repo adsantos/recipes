@@ -17,4 +17,9 @@ class RecipeIngredient < ActiveRecord::Base
       ri.save
     end
   end
+
+  def self.delete_relationship(recipe_id)
+    ri = RecipeIngredient.find_by_recipe_id(recipe_id)
+    ri.delete if ri
+  end
 end
