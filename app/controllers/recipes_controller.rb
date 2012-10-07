@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
-    if @recipe.update_attributes(params[:recipe])
+    if @recipe.update_with_ingredients_and_steps(params)
       flash[:message] = "Recipe updated successfully"
     end
     respond_with @recipe
