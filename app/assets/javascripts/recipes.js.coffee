@@ -7,14 +7,14 @@ $ ->
     $('#new_recipe_name').text(@value)
   )
 
-$ ->
-  if $('.pagination').length
-    $(window).scroll ->
-      url = $('.next > a').attr('href')
-      if url && $(window).scrollTop() > $(document).height() - $(window).height() - 1
-        $('.page').text('Fetching more products...')
-        $.getScript(url)
-      $(window).scroll()
+#$ ->
+#  if $('.pagination').length
+#    $(window).scroll ->
+#      url = $('.next > a').attr('href')
+#      if url && $(window).scrollTop() > $(document).height() - $(window).height() - 1
+ #       $('.page').text('Fetching more products...')
+ #       $.getScript(url)
+ #     $(window).scroll()
 
 window.append_ingredients = (ingredients) ->
   console.log ingredients
