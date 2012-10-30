@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:index, :show]
-  respond_to :html, :js
+  respond_to :html
 
   def index
     puts params.inspect
